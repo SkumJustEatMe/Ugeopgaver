@@ -1,0 +1,16 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+
+Class Lærer
+Class Hjælpelærer
+Class LearnInside
+Class Server
+Class Studerende
+Class Aflevering
+Class Kursus
+
+Lærer "1..*" --- "1" LearnInside : Bruger
+
+
+@enduml
