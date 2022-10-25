@@ -1,0 +1,43 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+Abstract Person{
+- Navn: String
+- Efternavn: String
+
+}
+class Lærer{
+
+}
+class Hjælpelærer{
+- Løn : int
+}
+class Aflevering{
+Afleveringsbeskrivelse: String
+tidsfrist()
+}
+class Studerende{
+- Studienummer: String
+}
+class Kursus{
+Kursusbeskrivelse: String
+
+}
+class System{
+
+hentAflevering()
+
+}
+Person <|-- Studerende
+Person <|-- Lærer
+Person <|-- Hjælpelærer
+Hjælpelærer "1..*" <--> "1" System :downloadsAflevering/uploadsFeedback
+Studerende "1..*" --> "1" System :uploadsAflevering
+System"1" --> "*"Aflevering :indeholder
+Lærer"1" --> "1..*"Kursus : underviser
+Kursus"1" <-- "10..*"Studerende :studerer
+Lærer"1" --> "1..*"Aflevering : opretter
+
+
+
+@enduml
