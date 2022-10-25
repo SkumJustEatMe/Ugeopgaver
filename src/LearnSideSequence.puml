@@ -1,0 +1,11 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+actor Student
+actor Teacher
+
+Student -> System: openCourse
+Student -> System: deliversAssignment
+System--> Student : sendsAssignmentReciept
+System --> Teacher: sendsAssignment
+@enduml
