@@ -1,50 +1,42 @@
 @startuml
 skinparam classAttributeIconSize 0
-
-Abstract Person{
-- Navn: String
-- Efternavn: String
+class BrugerController{
+getPersonOplysninger()
+isPesonAnsat(ID): boolean
+isPersonHjælpelærer(ID): boolean
+isPersonTeacher(ID): boolean
+}
+class Bruger{
+-Navn: String
+-Efternavn: String
+-ID: String
 }
 
-Class AfleveringsController{
+class AfleveringsController{
 hentAflevering()
 uploadAflevering(String )
 retAflevering()
 }
 
-
-Abstract Ansat{
--Løn
-}
-class Lærer{
-
-}
-class Hjælpelærer{
-- Løn : int
-}
 class Aflevering{
 Afleveringsbeskrivelse: String
 tidsfrist()
-}
-class Studerende{
-- Studienummer: String
-}
-class Kursus{
-Kursusbeskrivelse: String
 
 }
 class System{
 
-hentAflevering()
+getKursusOptions(ID)
 
 }
-Person <|-- Studerende : uploadsAflevering
-Ansat <|-- Lærer : opretterAflevering
-Ansat <|-- Hjælpelærer :downloadsAflevering/uploadsFeedback
-Ansat --|> Person
-Kursus"1" --> "*"Aflevering :indeholder
+class Kursus{
+KursusNr: int
+KursusNavn: int
+
+}
+BrugerController <-- Bruger
+Kursus"1" --> "1"AfleveringsController :indeholder
 System"1" --> "1..*"Kursus: indeholder
-Person "1" --> "1" System
+BrugerController "1" --> "1" System
 AfleveringsController --> Aflevering
 
 
