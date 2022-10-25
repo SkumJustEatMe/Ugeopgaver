@@ -4,13 +4,19 @@
 
 Class Lærer
 Class Hjælpelærer
-Class LearnInside
-Class Server
 Class Studerende
-Class Aflevering
+Class Ansat
+Class Aflevering{
+AfleveringsDato
+}
 Class Kursus
+Class Person
 
-Lærer "1..*" --- "1" LearnInside : Bruger
-
+Lærer --|> Ansat
+Studerende  --|> Person
+Hjælpelærer --|> Ansat
+Ansat --|> Person
+Kursus -- Aflevering
+Person -- Kursus
 
 @enduml
